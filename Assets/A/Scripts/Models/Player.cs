@@ -85,7 +85,7 @@ public class Player : AbstrackPlayer, IPlayer
                 }
 
                 {
-                    pos = pos + vel * Time.deltaTime;
+                    pos = pos + vel * Time.deltaTime*2;
                     transform.position = pos;
                 }
             }
