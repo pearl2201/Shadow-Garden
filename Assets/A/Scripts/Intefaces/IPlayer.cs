@@ -8,7 +8,7 @@ public interface IPlayer
 {
     void ExecuteCommandDirection(List<CommandDirection> listCmdDir);
     void Init(float posX, float posY, int delay);
-    void UpdatePosition(List<V3<float>> pos);
+    void UpdatePosition(List<UnityEngine.Vector3> pos);
 
 }
 

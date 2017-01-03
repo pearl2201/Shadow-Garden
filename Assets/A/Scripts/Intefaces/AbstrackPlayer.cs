@@ -7,7 +7,7 @@ using UnityEngine;
 public class AbstrackPlayer:MonoBehaviour
 {
 
-    protected int delayTurn;
+    public int delayTurn;
     protected Vector3 pos;
 
     public MainGameScripts mainGameScript;

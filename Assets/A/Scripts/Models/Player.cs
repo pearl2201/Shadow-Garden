@@ -15,6 +15,8 @@ public class Player : AbstrackPlayer, IPlayer
 
     private CommandDirection dir;
 
+    [SerializeField]
+    private ParticleSystem parDeath;
     void Start()
     {
         vel = Vector3.zero;
@@ -64,7 +66,7 @@ public class Player : AbstrackPlayer, IPlayer
                         bool isPlayerHitTheWall = false;
                         Ray ray = new Ray(transform.position, vel);
 
-                        if (Physics.Raycast(ray, out hit, 0.2f))
+                        if (Physics.Raycast(ray, out hit, 0.25f))
                         {
                             if (hit.collider.tag == "wall")
                             {
@@ -98,26 +100,30 @@ public class Player : AbstrackPlayer, IPlayer
     {
         if (other.gameObject.tag == "Shadow")
         {
-            isDead = true;
-            mainGameScript.PlayerDeath();
+            Death();
         }
         if (other.gameObject.tag == "Coin")
         {
-            mainGameScript.ExeEatCoin(other.gameObject.GetComponent<Coin>());
+            mainGameScript.ExeEatCoin(other.gameObject);
         }
         if (other.gameObject.tag == "plane")
         {
-            isDead = true;
-            mainGameScript.PlayerDeath();
+            Death();
         }
     }
 
+    public void Death()
+    {
+        isDead = true;
+        parDeath.Play();
+        mainGameScript.PlayerDeath();
+    }
     public void Init(float posX, float posY, int delay)
     {
 
     }
 
-    public void UpdatePosition(List<V3<float>> pos)
+    public void UpdatePosition(List<Vector3> pos)
     {
 
     }
